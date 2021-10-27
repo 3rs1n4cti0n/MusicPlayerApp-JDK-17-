@@ -11,3 +11,6 @@ The project is developed using [android studio 2020.3.1](https://developer.andro
 
 
 The project has been tested and developed in 1080 x 1920 resolution and API 27 on Android 8.1.
+
+###Credits
+-[Flutter Spinkit](https://pub.dev/packages/flutter_spinkit)
