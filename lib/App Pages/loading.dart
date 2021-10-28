@@ -12,7 +12,7 @@ class _LoadingPageState extends State<LoadingPage> {
 
   // TODO: write code to get data from APIs, local files, urls
   void getData() async{
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     Navigator.pushNamed(context, '/home');
   }
   @override
@@ -25,23 +25,20 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[200],
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SpinKitWave(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.primary,
               size: 80,
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Align(
               alignment: Alignment.center,
-              child: Text('Loading',style: TextStyle(
-                fontSize: 24,
-                color: Colors.white
-              ),),
+              child: Text('Loading',style: Theme.of(context).textTheme.bodyText1),
             )
           ],
         ),

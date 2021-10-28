@@ -11,7 +11,7 @@ class _CurrentSongState extends State<CurrentSong> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: SizedBox(
           height: double.infinity,
@@ -20,84 +20,87 @@ class _CurrentSongState extends State<CurrentSong> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                height: 100,
-                width: double.infinity,
-                color: Colors.amber[600],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, '/home');
-                          },
-                          child: Icon(
-                            Icons.home_filled,
-                            size: 80,
-                            color: Colors.amber[200],
-                          )),
-                    ),
-                    const VerticalDivider(
-                      width: 0,
-                    ),
-                    Expanded(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.popAndPushNamed(context,'/profile');
-                          },
-                          child: Icon(
-                            Icons.account_box_outlined,
-                            size: 80,
-                            color: Colors.amber[200],
-                          )),
-                    ),
-                    const VerticalDivider(
-                      width: 0,
-                    ),
-                    Expanded(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/settings');
-                          },
-                          child: Icon(
-                            Icons.settings,
-                            size: 80,
-                            color: Colors.amber[200],
-                          )),
-                    ),
-                  ],
+              Flexible(
+                flex: 2,
+                child: Container(
+                  width: double.infinity,
+                  color: Theme.of(context).primaryColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.pop(context, '/home');
+                            },
+                            child: Icon(
+                              Icons.home_filled,
+                              size: 50,
+                              color: Theme.of(context).colorScheme.background,
+                            )),
+                      ),
+                      const VerticalDivider(
+                        width: 0,
+                      ),
+                      Expanded(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.popAndPushNamed(context,'/profile');
+                            },
+                            child: Icon(
+                              Icons.account_box_outlined,
+                              size: 50,
+                              color: Theme.of(context).colorScheme.background,
+                            )),
+                      ),
+                      const VerticalDivider(
+                        width: 0,
+                      ),
+                      Expanded(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/settings');
+                            },
+                            child: Icon(
+                              Icons.settings,
+                              size: 50,
+                              color: Theme.of(context).colorScheme.background,
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // TODO: replace with current song picture
-              Container(
-                  color: Colors.amber[300],
-                  height: 300,
-                  width: double.infinity,
-                  child: Icon(
-                    Icons.account_box_sharp,
-                    size: 300,
-                    color: Colors.amber[900],
-                  )),
-              Container(height: 40,color: Colors.amber[300],),
+              Expanded(
+                flex: 10,
+                child: Center(
+                  child: Container(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      child: Icon(
+                        Icons.account_box_sharp,
+                        size: 300,
+                        color: Theme.of(context).colorScheme.background,
+                      )),
+                ),
+              ),
               Flexible(
+                flex: 3,
                 child: Container(
-                  color: Colors.amber[500],
+                  color: Theme.of(context).primaryColor,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Flexible(
                             flex: 1,
-                            // TODO: make a favourite list
                             child: TextButton.icon(
                                 onPressed: () {},
                                 icon: Icon(
                                   Icons.favorite,
-                                  size: 30,
-                                  color: Colors.amber[100],
+                                  size: 20,
+                                  color: Theme.of(context).colorScheme.background,
                                 ),
                                 label: const Text('')),
                           ),
@@ -106,10 +109,7 @@ class _CurrentSongState extends State<CurrentSong> {
                               flex: 4,
                               child: Text(
                                 'Music Name',
-                                style: TextStyle(
-                                    color: Colors.amber[900],
-                                    fontSize: 20,
-                                    fontStyle: FontStyle.italic),
+                                style: Theme.of(context).textTheme.bodyText2,
                               )),
                           Flexible(
                             flex: 1,
@@ -117,8 +117,7 @@ class _CurrentSongState extends State<CurrentSong> {
                                 onPressed: () {},
                                 icon: Icon(
                                   Icons.playlist_play_rounded,
-                                  color: Colors.amber[100],
-                                  size: 30,
+                                  color: Theme.of(context).colorScheme.background,
                                 ),
                                 label: const Text('')),
                           )
@@ -126,9 +125,9 @@ class _CurrentSongState extends State<CurrentSong> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        // TODO: add music lenght bar thing
+                        // TODO: add music length bar thing
                         children: const [
-                          // TODO: add some widgets
+                          // add some widgets
                         ],
                       ),
                       Row(
@@ -139,8 +138,8 @@ class _CurrentSongState extends State<CurrentSong> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.loop_rounded,
-                                size: 30,
-                                color: Colors.amber[100],
+                                size: 15,
+                                color: Theme.of(context).colorScheme.background,
                               ),
                               label: const Text('')),
                           // TODO: add go to previous song
@@ -148,8 +147,8 @@ class _CurrentSongState extends State<CurrentSong> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.skip_previous_rounded,
-                                size: 30,
-                                color: Colors.amber[100],
+                                size: 15,
+                                color: Theme.of(context).colorScheme.background,
                               ),
                               label: const Text('')),
                           // TODO: add play and pause function and change button accordingly
@@ -157,8 +156,8 @@ class _CurrentSongState extends State<CurrentSong> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.play_arrow,
-                                size: 50,
-                                color: Colors.amber[100],
+                                size: 25,
+                                color: Theme.of(context).colorScheme.background,
                               ),
                               label: const Text('')),
                           // TODO: add skip to next song
@@ -166,8 +165,8 @@ class _CurrentSongState extends State<CurrentSong> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.skip_next_rounded,
-                                size: 30,
-                                color: Colors.amber[100],
+                                size: 15,
+                                color:Theme.of(context).colorScheme.background,
                               ),
                               label: const Text('')),
                           // TODO: make it so a random music is played
@@ -175,8 +174,8 @@ class _CurrentSongState extends State<CurrentSong> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.shuffle,
-                                size: 30,
-                                color: Colors.amber[100],
+                                size: 15,
+                                color: Theme.of(context).colorScheme.background,
                               ),
                               label: const Text(''))
                         ],

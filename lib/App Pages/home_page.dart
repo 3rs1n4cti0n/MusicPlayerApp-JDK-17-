@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,11 +8,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber[200],
         body: Column(
           children: [
             Expanded(
@@ -23,7 +21,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Flexible(
                     child: Container(
-                      color: Colors.amber,
+                      color: Theme.of(context).primaryColor,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,12 +32,12 @@ class _HomeState extends State<Home> {
                                 Navigator.pushNamed(context, '/profile');
                               },
                               child: Icon(Icons.account_box_outlined,
-                                  color: Colors.amber[200]),
+                                  color: Theme.of(context).colorScheme.background,),
                             ),
                           ),
                           Divider(
                             height: 0,
-                            color: Colors.grey[400],
+                            color:Theme.of(context).dividerColor,
                             thickness: 0,
                           ),
                           Expanded(
@@ -48,12 +46,12 @@ class _HomeState extends State<Home> {
                                 Navigator.pushNamed(context, '/currentsong');
                               },
                               child: Icon(Icons.music_note,
-                                  color: Colors.amber[200]),
+                                  color: Theme.of(context).colorScheme.background,),
                             ),
                           ),
                           Divider(
                             height: 0,
-                            color: Colors.grey[400],
+                            color: Theme.of(context).dividerColor,
                             thickness: 0,
                           ),
                           Expanded(
@@ -62,12 +60,17 @@ class _HomeState extends State<Home> {
                                 Navigator.pushNamed(context, '/settings');
                               },
                               child: Icon(Icons.settings,
-                                  color: Colors.amber[200]),
+                                  color: Theme.of(context).colorScheme.background,),
                             ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                  VerticalDivider(
+                    width: 0,
+                    color: Theme.of(context).dividerColor,
+                    thickness: 0,
                   ),
                   Flexible(
                       flex: 5,
@@ -77,7 +80,7 @@ class _HomeState extends State<Home> {
                           Flexible(
                             flex: 1,
                             child: Container(
-                              color: Colors.amber[400],
+                              color: Theme.of(context).primaryColor,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -89,16 +92,13 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         'Albums',
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.amber[100],
-                                        ),
+                                        style: Theme.of(context).textTheme.headline4,
                                       ),
                                     ),
                                   ),
                                   VerticalDivider(
                                     width: 0,
-                                    color: Colors.grey[400],
+                                    color: Theme.of(context).dividerColor,
                                     thickness: 0,
                                   ),
                                   Expanded(
@@ -107,16 +107,13 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         'Playlists',
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: Colors.amber[100],
-                                          fontSize: 12,
-                                        ),
+                                        style: Theme.of(context).textTheme.headline4,
                                       ),
                                     ),
                                   ),
                                   VerticalDivider(
                                     width: 0,
-                                    color: Colors.grey[400],
+                                    color: Theme.of(context).dividerColor,
                                     thickness: 0,
                                   ),
                                   Expanded(
@@ -125,10 +122,7 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         'Songs',
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: Colors.amber[100],
-                                          fontSize: 12,
-                                        ),
+                                        style: Theme.of(context).textTheme.headline4,
                                       ),
                                     ),
                                   ),
@@ -140,81 +134,73 @@ class _HomeState extends State<Home> {
                             flex: 8,
                             child: Container(
                               height: double.infinity,
-                              color: Colors.amber[300],
-                              child: ListView.builder(
-                                  itemCount: 150,
-                                  itemBuilder: (context, index) {
-                                    index++;
-                                    return Container(
-                                      width: double.infinity,
-                                      color: Colors.amber[100],
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          TextButton(
-                                            onPressed: () {},
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.ac_unit,
-                                                  color: Colors.amber[800],
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      // TODO: replace with music name
-                                                      'this is music $index',
-
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        color:
-                                                            Colors.amber[800],
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      // TODO: replace with album name
-                                                      'Album',
-                                                      style: TextStyle(
-                                                          color:
-                                                              Colors.amber[800],
-                                                          fontSize: 10,
-                                                          fontStyle:
-                                                              FontStyle.italic),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Expanded(
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
+                              color: Theme.of(context).colorScheme.primary,
+                              child: RawScrollbar(
+                                thickness: 5,
+                                thumbColor: Theme.of(context).colorScheme.background,
+                                isAlwaysShown: true,
+                                radius: const Radius.circular(30),
+                                child: ListView.builder(
+                                    itemCount: 150,
+                                    itemBuilder: (context, index) {
+                                      index++;
+                                      return Container(
+                                        width: double.infinity,
+                                        color: Theme.of(context).scaffoldBackgroundColor,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {},
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.ac_unit,
+                                                    color: Theme.of(context).colorScheme.background,
+                                                  ),
+                                                  Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
+                                                        CrossAxisAlignment.start,
                                                     children: [
-                                                      // TODO: add the actual time for the song
-                                                      Text('3:15',
-                                                          style: TextStyle(
-                                                              color: Colors
-                                                                  .amber[500],
-                                                              fontSize: 10)),
+                                                      Text(
+                                                        // TODO: replace with music name
+                                                        'this is music $index',
+
+                                                        style: Theme.of(context).textTheme.bodyText2,
+                                                      ),
+                                                      Text(
+                                                        // TODO: replace with album name
+                                                        'Album',
+                                                        style: Theme.of(context).textTheme.headline3,
+                                                      ),
                                                     ],
                                                   ),
-                                                ),
-                                              ],
+                                                  Expanded(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.end,
+                                                      children: [
+                                                        // TODO: add the actual time for the song
+                                                        Text('3:15',
+                                                            style: Theme.of(context).textTheme.headline3),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Divider(
-                                            height: 0,
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  }),
+                                            Divider(
+                                              height: 0,
+                                              color: Theme.of(context).dividerColor,
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                              ),
                             ),
                           ),
                         ],
@@ -224,10 +210,10 @@ class _HomeState extends State<Home> {
             ),
             Divider(
               height: 0,
-              color: Colors.amber[900],
+              color: Theme.of(context).dividerColor,
             ),
             Container(
-              color: Colors.amber[500],
+              color: Theme.of(context).primaryColor,
               child: Column(
                 children: [
                   Row(
@@ -240,19 +226,16 @@ class _HomeState extends State<Home> {
                             icon: Icon(
                               Icons.favorite,
                               size: 20,
-                              color: Colors.amber[100],
+                              color: Theme.of(context).colorScheme.background,
                             ),
-                            label: Text('')),
+                            label: const Text('')),
                       ),
                       // TODO: replace title with music name
                       Flexible(
                           flex: 4,
                           child: Text(
                             'Music Name',
-                            style: TextStyle(
-                                color: Colors.amber[900],
-                                fontSize: 14,
-                                fontStyle: FontStyle.italic),
+                            style: Theme.of(context).textTheme.bodyText2,
                           )),
                       Flexible(
                         flex: 1,
@@ -260,15 +243,15 @@ class _HomeState extends State<Home> {
                             onPressed: () {},
                             icon: Icon(
                               Icons.playlist_play_rounded,
-                              color: Colors.amber[100],
+                              color: Theme.of(context).colorScheme.background,
                             ),
-                            label: Text('')),
+                            label: const Text('')),
                       )
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // TODO: add music lenght bar thing
+                    // TODO: add music length bar thing
                     children: const [
                       // add some widgets
                     ],
@@ -282,45 +265,45 @@ class _HomeState extends State<Home> {
                           icon: Icon(
                             Icons.loop_rounded,
                             size: 15,
-                            color: Colors.amber[100],
+                            color: Theme.of(context).colorScheme.background,
                           ),
-                          label: Text('')),
+                          label: const Text('')),
                       // TODO: add go to previous song
                       TextButton.icon(
                           onPressed: () {},
                           icon: Icon(
                             Icons.skip_previous_rounded,
                             size: 15,
-                            color: Colors.amber[100],
+                            color: Theme.of(context).colorScheme.background,
                           ),
-                          label: Text('')),
+                          label: const Text('')),
                       // TODO: add play and pause function and change button accordingly
                       TextButton.icon(
                           onPressed: () {},
                           icon: Icon(
                             Icons.play_arrow,
                             size: 25,
-                            color: Colors.amber[100],
+                            color: Theme.of(context).colorScheme.background,
                           ),
-                          label: Text('')),
+                          label: const Text('')),
                       // TODO: add skip to next song
                       TextButton.icon(
                           onPressed: () {},
                           icon: Icon(
                             Icons.skip_next_rounded,
                             size: 15,
-                            color: Colors.amber[100],
+                            color:Theme.of(context).colorScheme.background,
                           ),
-                          label: Text('')),
+                          label: const Text('')),
                       // TODO: make it so a random music is played
                       TextButton.icon(
                           onPressed: () {},
                           icon: Icon(
                             Icons.shuffle,
                             size: 15,
-                            color: Colors.amber[100],
+                            color: Theme.of(context).colorScheme.background,
                           ),
-                          label: Text(''))
+                          label: const Text(''))
                     ],
                   )
                 ],

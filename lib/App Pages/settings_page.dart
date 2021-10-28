@@ -15,14 +15,15 @@ class _SettingsPageState extends State<SettingsPage> {
         appBar: AppBar(
           title: Text(
             'Settings',
-            style: TextStyle(
-              color: Colors.amber[50],
-            ),
+            style: Theme.of(context).textTheme.headline1,
           ),
-          backgroundColor: Colors.amber,
+          backgroundColor: Theme.of(context).primaryColor,
           elevation: 2,
+          iconTheme: IconThemeData(
+            color: Theme.of(context).colorScheme.primary
+          ),
         ),
-        backgroundColor: Colors.amber[200],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: ListView.builder(
             itemCount: 50,
             itemBuilder: (context, index) {
@@ -41,8 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'This is setting no: $index',
-                              style: TextStyle(
-                                  color: Colors.amber[900], fontSize: 18),
+                              style: Theme.of(context).textTheme.bodyText2,
                             )),
                       ),
                     ),
